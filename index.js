@@ -15,7 +15,8 @@ async function generatePdf(file, options, callback) {
   }
 
   const browser = await puppeteer.launch({
-    args: args
+    args: args,
+    env: Object.assign({}, process.env, {LD_LIBRARY_PATH: "/home/virt9101/nodejs_apps/libs"})
   });
   const page = await browser.newPage();
 
@@ -56,7 +57,8 @@ async function generatePdfs(files, options, callback) {
     delete options.args;
   }
   const browser = await puppeteer.launch({
-    args: args
+    args: args,
+    env: Object.assign({}, process.env, {LD_LIBRARY_PATH: "/home/virt9101/nodejs_apps/libs"})
   });
   let pdfs = [];
   const page = await browser.newPage();
